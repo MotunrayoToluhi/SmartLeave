@@ -1,0 +1,32 @@
+import requests
+from datetime import datetime as dt
+
+# connect api, get all information for England & Wales
+url = 'https://www.gov.uk/bank-holidays.json'
+response = requests.get(url)
+all_holidays = response.json()
+# can make class here to use england&wales, scotland or NI
+eng_w = all_holidays["england-and-wales"]["events"]
+
+# test for above code
+# print (eng_w)
+
+# change here to make more useble 
+# reduce to just dates
+hols_list = []
+for i in eng_w:
+  # for key in i:
+    hols_list.append(i['date'])
+
+# test for above code
+# print(hols_list)
+
+# this can be new class for 2024, make another for 2025
+
+# change data type of dates from string to date data-type
+twentyfour = []
+for h in hols_list:
+  dt.strptime(h, '%Y-%m-%d').date()
+  if h >= '2024-01-01' and h < '2025-01-01':
+      twentyfour.append(h)
+print(twentyfour)
