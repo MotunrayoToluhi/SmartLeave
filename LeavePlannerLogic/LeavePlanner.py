@@ -1,7 +1,5 @@
-import requests, datetime
-
-
-# import Static_data.DateCategories import seasons_data
+from datetime import datetime
+from Static_data.DateCategories import seasons_data
 
 
 # def user_preferences():
@@ -15,7 +13,7 @@ import requests, datetime
 #
 # user_preferences()
 
-def leave_left():
+def initial_leave_left():
     while True:
         remaining_leave = input(f"How many leave days do you have left to use?: ")
         if remaining_leave.isdigit():
@@ -37,7 +35,18 @@ def user_chosen_season():
             break
         else:
             print("Season must be Summer, Winter, Spring or Autumn")
-    return
+    return preferred_season
+
+def user_chosen_year():
+    while True:
+        preferred_year = input(f"What do you year to go on holiday in? (2023, 2024, 2025): ")
+        preferred_year = preferred_year.lower()
+        if preferred_year in ["2023", "2024", "2025"]:
+            break
+        else:
+            print("year must be 2023, 2024 or 2025")
+    return preferred_year
+
 
 def days_notice():
     while True:
@@ -52,7 +61,23 @@ def days_notice():
             print(f"Please enter a valid positive number.")
     return user_days_notice
 
+# def holidays_by_seasons():
 
-leave_left()
-days_notice()
-user_chosen_season()
+
+# def holiday_range_calculator():
+#     if user_chosen_season() in seasons_data:
+#         month_names = seasons_data[season.lower()]
+#         month_dates = [datetime.strptime(month, "%B").month for month in month_names]
+#         return month_dates
+#     else:
+#         return None
+
+
+# if user_chosen_season() in seasons_data:
+#     print(f"yes")
+
+
+# initial_leave_left()
+# days_notice()
+# user_chosen_season()
+user_chosen_year()
