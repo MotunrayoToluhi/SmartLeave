@@ -13,3 +13,13 @@ remaining_al = user_data[0][1]
 
 # Display the user's original total and remaining annual leave
 print(f"You originally had {total_al} days of annual leave. You currently have {remaining_al} days remaining.")
+
+# Ask user whether they need more from the app or do they want to quit.
+user_choice = input("Do you need more help from SmartLeave today? Answer 'y' or 'n': ")
+if user_choice == 'y':
+    print("Yes")
+elif user_choice == 'n':
+    print("No")
+else:
+    print("Please try again and type either 'y' or 'n'. ")
+
