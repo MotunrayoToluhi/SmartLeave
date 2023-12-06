@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime
 from Static_data.DateCategories import seasons_data
 
 
@@ -13,15 +13,16 @@ def get_API_holidays():
 
 holidays = get_API_holidays()
 
-holidays_by_season = {
-    "winter_holidays": [],
-    "spring_holidays": [],
-    "summer_holidays": [],
-    "autumn_holidays": []
-}
-
 
 def categorize_by_season():
+
+    holidays_by_season = {
+        "winter_holidays": [],
+        "spring_holidays": [],
+        "summer_holidays": [],
+        "autumn_holidays": []
+    }
+
     for event in holidays:
         event_date_str = event["date"]
         event_title = event["title"]
@@ -36,9 +37,13 @@ def categorize_by_season():
                         "date": event_date_str
                     })
                     break
+    return holidays_by_season
 
 
-categorize_by_season()
+categorized_holiday = categorize_by_season()
 
-for key, holidays_list in holidays_by_season.items():
-    print(f"{key}: {holidays_list}")
+#
+# # Test dictionary
+# print(categorized_holiday)
+# for key, holidays_list in categorized_holiday.items():
+#     print(f"{key}: {holidays_list}")

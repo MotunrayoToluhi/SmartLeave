@@ -1,10 +1,3 @@
-# seasons_data = {
-#     "winter": ["December", "January", "February"],
-#     "spring": ["March", "April", "May"],
-#     "summer": ["June", "July", "August"],
-#     "autumn": ["September", "October", "November"],
-# }
-
 seasons_data = {
         "winter": [(12, None), (1, None), (2, None)],
         "spring": [(3, None), (4, None), (5, None)],
