@@ -22,4 +22,3 @@ elif user_choice == 'n':
     print("No")
 else:
     print("Please try again and type either 'y' or 'n'. ")
-
