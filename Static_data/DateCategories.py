@@ -1,3 +1,4 @@
+# dictionary that defines what mons are in what seasons
 seasons_data = {
         "winter": [(12, None), (1, None), (2, None)],
         "spring": [(3, None), (4, None), (5, None)],

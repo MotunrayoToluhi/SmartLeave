@@ -3,7 +3,8 @@ from datetime import datetime
 from Static_data.DateCategories import seasons_data
 
 
-# app.route()
+# app.route() as an abstract method for oop?
+# helen showed this at the beginning of lesson
 def get_API_holidays():
     url = 'https://www.gov.uk/bank-holidays.json'
     response = requests.get(url)
@@ -13,7 +14,7 @@ def get_API_holidays():
 
 holidays = get_API_holidays()
 
-
+# categorizing the holidays gotten from the api into seasons
 def categorize_by_season():
 
     holidays_by_season = {
