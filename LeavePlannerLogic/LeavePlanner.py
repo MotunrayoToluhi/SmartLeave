@@ -117,10 +117,12 @@ def filter_by_year(filtered_season_result, year, season):
 filtered_season_result = filtered_season()
 filtered_year_season = filter_by_year(filtered_season_result, holiday_year, holiday_season)
 
-print(filtered_year_season)
-print(filtered_season_result)
-print(holiday_year)
-print(holiday_season)
+# print(filtered_year_season)
+# print(filtered_season_result)
+# print(holiday_year)
+# print(holiday_season)
+
+def cal_holiday_date():
 
 # backup function that filters the bank holidays from
 # the api only based on the year that the user wants to go on holiday in
