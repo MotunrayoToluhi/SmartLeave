@@ -1,8 +1,14 @@
 from user_input import get_user_name
 from Database.Db_utils import get_user_data_by_name
+from user_input import SmartLeaveApp
 
 # Get user input
 user_name = get_user_name()
+
+# if __name__ == "__main__":
+#     smart_leave_app = SmartLeaveApp()
+#     smart_leave_app.get_user_name()
+#     smart_leave_app.display_welcome_message()
 
 # Retrieve user data from the database
 user_data = get_user_data_by_name(user_name)
