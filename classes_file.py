@@ -16,24 +16,12 @@ hol_request_1 = HolidayRequest("summer", 5, 2)
 
 # creating a class for handling members
 
-# import mysql.connector
-# from Database.config import USER, PASSWORD, HOST
-# class User:
-#     def __init__(self, user_name, user_total_al, user_remaining_al):
-#         self.user_name = user_name
-#         self.user_total_al = user_total_al
-#         self.user_remaining_al = user_remaining_al
+class User:
+    def __init__(self, user_name, user_total_al, user_remaining_al):
+        self.user_name = user_name
+        self.user_total_al = user_total_al
+        self.user_remaining_al = user_remaining_al
 #
-# class UserDatabase:
-#     def __int__(self, host=HOST, user=USER, password=PASSWORD, database=None):
-#         db_name= "SmartLeave"
-#         self.connection = mysql.connector.connect(
-#         host=HOST,
-#         user=USER,
-#         password=PASSWORD,
-#         auth_plugin='mysql_native_password',
-#         database=db_name
-#         )
 #
 # # use INSERT IGNORE to avoid duplicates in info
 #     def add_user_to_db(self, user):
