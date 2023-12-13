@@ -20,14 +20,14 @@ def _connect_to_db(db_name):
 # Try out helper option
 def get_user_data_by_name(current_name):
     try:
-        db_name = "SmartLeave"
+        db_name = "TestData"
         db_connection = _connect_to_db(db_name)
         cur = db_connection.cursor()
         # print("Connected to DB")
 
-        query = "SELECT user_total_al, user_remaining_al FROM user_info WHERE user_name = %s"
+        query = "SELECT * from users"
 
-        cur.execute(query, current_name)
+        cur.execute(query)
 
         result = cur.fetchall()
 
