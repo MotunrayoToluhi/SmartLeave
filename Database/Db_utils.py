@@ -1,4 +1,4 @@
-from config import USER, PASSWORD, HOST
+from config import USER, PASSWORD, PORT, HOST
 import mysql.connector
 
 
@@ -27,7 +27,7 @@ def get_user_data_by_name(current_name):
 
         query = "SELECT user_total_al, user_remaining_al FROM user_info WHERE user_name = %s"
 
-        cur.execute(query, (current_name,))
+        cur.execute(query, current_name)
 
         result = cur.fetchall()
 
@@ -44,6 +44,6 @@ def get_user_data_by_name(current_name):
     return result
 
 
-# current_name = 'Ayo'
-# get_user_data_by_name(current_name)
+current_name = 'Ayo'
+get_user_data_by_name(current_name)
 
