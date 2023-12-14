@@ -1,11 +1,10 @@
+# from Final_project.config import HOST, USER, PASSWORD
 import mysql.connector
 from Final_project.classes_file import User
-# from Final_project.Database.config import HOST, USER, PASSWORD
 
 HOST = "127.0.0.1"
 USER = "root"
 PASSWORD = ""
-PORT = "3306"
 DATABASE = "SmartLeave"
 
 class DbConnectionError(Exception):
@@ -108,7 +107,9 @@ def get_user_info(user):
 if __name__ == "__main__":
     # trial user object
     user1 = User("Jane", 30, 25)
+    user2 = User("Terri", 30, 25)
 
-    # get_user_info('Ayo')
+    # add_user_to_db(user2)
+    print(select_all_userinfo())
 
 
