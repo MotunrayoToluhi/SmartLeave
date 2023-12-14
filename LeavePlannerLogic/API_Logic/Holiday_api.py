@@ -2,7 +2,6 @@ import requests
 from datetime import datetime
 from Static_data.DateCategories import seasons_data
 
-
 # app.route() as an abstract method for oop?
 # helen showed this at the beginning of lesson
 def get_API_holidays():
@@ -13,6 +12,19 @@ def get_API_holidays():
 
 
 holidays = get_API_holidays()
+
+# getting just bank holidays as dates
+def just_bank_holidays(hols_list):
+    first_list_of_dates = []
+    list_of_dates = []
+    for each in hols_list:
+        first_list_of_dates.append(each['date'])
+    for x in first_list_of_dates:
+        date_x = datetime.strptime(x, '%Y-%m-%d').date()
+        list_of_dates.append(date_x)
+    return list_of_dates
+
+bank_holidays = just_bank_holidays(holidays)
 
 # categorizing the holidays gotten from the api into seasons
 def categorize_by_season():
