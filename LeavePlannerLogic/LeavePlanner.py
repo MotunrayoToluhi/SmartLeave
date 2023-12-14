@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from LeavePlannerLogic.API_Logic.Holiday_api import categorized_holiday
 
+# FUNCTIONALITY THAT IS NOT IN OOP
+# WILL DELETE WHEN EVERYTHING WORKS
 class LeavePlanner:
     def __init__(self):
         self.max_leave = self.leave_entitlement()
