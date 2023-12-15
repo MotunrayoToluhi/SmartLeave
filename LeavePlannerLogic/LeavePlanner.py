@@ -4,8 +4,10 @@ from API_Logic.Holiday_api import categorized_holiday, bank_holidays
 
 # FUNCTIONALITY THAT IS NOT IN OOP
 # WILL DELETE WHEN EVERYTHING WORKS
-class LeavePlanner:
+class LeavePlannerFunc:
     def __init__(self):
+        self.next_bank = self.next_bank_holiday()
+        self.birthday = self.birthday_off()
         self.max_leave = self.leave_entitlement()
         self.leave_taken = 0
         self.days_of_holiday = self.holiday_length()
@@ -18,14 +20,14 @@ class LeavePlanner:
         self.date_list = [holiday["date"] for holiday in self.filtered_year_season[self.holiday_season]]
         self.date_obj_list = [datetime.datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
 
-    # need to re-write this in to __init__
+
+    # function to get next bank holiday
     def next_bank_holiday(bank_hol):
         today = datetime.datetime.now().date()
         next_one = min(bank_holidays, key=lambda x: abs(x - today))
         return next_one
 
-    # next_bank = next_bank_holiday(bank_holidays) -> need to export this to main
-    # need to re-write this in to __init__
+    # function check if birthday lands on weekend or AL or neither
     def birthday_off(birthday):
         date_birthday = datetime.datetime.strptime(birthday, '%Y-%m-%d').date()
         print(date_birthday)

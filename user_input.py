@@ -29,7 +29,6 @@ def new_or_recurring():
         new_user_name = input('What is your name? ')
         new_user_all_al = input('What is your allocation of annual leave? ')
         new_user_al_left = input('How many days of annual leave do you have left? ')
-        # try clause not working
         try:
             if new_user_all_al < new_user_al_left:
                 raise Exception
@@ -43,7 +42,6 @@ def new_or_recurring():
         print('Data no recognised, please try again')
 
 
-my_user = new_or_recurring()
 
         # if __name__ == "__main__":
         # smart_leave_app = SmartLeaveApp()
@@ -52,39 +50,6 @@ my_user = new_or_recurring()
 
         # Retrieve user data from the database
 
-class User_details:
-    def __init__(self, name):
-        self.user_name = name
-
-#     def get_user_name(self):
-#         print('Welcome back!')
-#         self.name = input('What is your name? ')
-#         return self.name
-#
-#
-# user = User_details()
-
-#     def display_welcome_message(self):
-#         print(f"Hello, {self.user_name}!")
-#
-#     if name.isalpha():
-#         pass
-#     else:
-#         print("Please input your name using letters only")
-#         return get_user_name()
-#     return name
-# get_user_name()
-
-
-# class User:
-#
-#     def __init__(self, name, all_annual_leave, used_days):
-#         self.name = name
-#         self.all_annual_leave = all_annual_leave
-#         self.used_days = used_days
-#
-#
-# def intro():
 #     print('Welcome to SmartLeave!')
 #     name = input('What is your name? ')
 #     al = int(input('How many annual leave days do you have? '))

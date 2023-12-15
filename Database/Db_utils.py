@@ -101,6 +101,24 @@ def get_user_info(user):
             # print("DB connection is closed")
 
 
+def update_used_al(user_name, remaining_al):
+    try:
+        db_name = "SmartLeave"
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+
+        cur.execute(''' UPDATE user_info SET user_remaining_al =  %s WHERE user_name = %s ''', (remaining_al, user_name))
+        db_connection.commit()
+        return
+
+    except Exception:
+        raise DbConnectionError("Failed")
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print("DB connection is closed")
+
 # test if it works with this sample usage
 
 if __name__ == "__main__":
@@ -109,10 +127,6 @@ if __name__ == "__main__":
     user2 = User("Terri", 30, 25)
 
     # add_user_to_db(user2)
-    # print(select_all_userinfo())
+    print(select_all_userinfo())
 
-# me = get_user_info('Mari')
-# print(me)
-# print(type(me[0]))
-# remaining = me[-1] - me[-2]
-# print(remaining)
+update_used_al('Mari', 24)
