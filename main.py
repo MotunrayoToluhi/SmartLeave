@@ -1,9 +1,5 @@
-from user_input import get_user_name
-from Database.Db_utils import get_user_data_by_name
-from user_input import SmartLeaveApp, intro
-from LeavePlannerLogic.LeavePlanner import LeavePlanner
-
-
+from user_input import new_or_recurring
+from LeavePlannerLogic.LeavePlanner import LeavePlanner.next_bank
 
 print("""
  ____  __  __    _    ____ _____ _     _____    ___     _______ 
@@ -13,24 +9,17 @@ print("""
 |____/|_|  |_/_/   \_\_| \_\|_| |_____|_____/_/   \_\_/  |_____|
             """)
 
-
-# Get user input
-user_name = get_user_name()
+user_data = new_or_recurring()
 
 # if __name__ == "__main__":
-#     smart_leave_app = SmartLeaveApp()
+#     smart_leave_app = User_details()
 #     smart_leave_app.get_user_name()
 #     smart_leave_app.display_welcome_message()
 
 # Retrieve user data from the database
-user_data = get_user_data_by_name(user_name)
+
 
 # Organise data into total annual leave and remaining
-total_al = user_data[0][0]
-remaining_al = user_data[0][1]
-
-# Display the user's original total and remaining annual leave
-print(f"You originally had {total_al} days of annual leave. You currently have {remaining_al} days remaining.")
 
 
 # Below here :NEED TO RE-Route to DB here instead of user_input - intro

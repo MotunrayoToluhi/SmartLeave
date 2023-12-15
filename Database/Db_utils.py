@@ -1,11 +1,7 @@
-# from Final_project.config import HOST, USER, PASSWORD
+from Final_project.config import HOST, USER, PASSWORD
 import mysql.connector
 from Final_project.classes_file import User
 
-HOST = "127.0.0.1"
-USER = "root"
-PASSWORD = ""
-DATABASE = "SmartLeave"
 
 class DbConnectionError(Exception):
     pass
@@ -87,11 +83,14 @@ def get_user_info(user):
         # print("Connected to DB")
 
         cur.execute(''' SELECT * FROM user_info WHERE user_name = %s ''', (user,))
-        user_info= cur.fetchone()
+        user_info = cur.fetchone()
 
-        print(user_info)
+        # print(type(user_info[0]))
+        # print(user_info)
 
         cur.close()
+        return user_info
+
 
     except Exception:
         raise DbConnectionError("Failed to read data")
@@ -110,6 +109,10 @@ if __name__ == "__main__":
     user2 = User("Terri", 30, 25)
 
     # add_user_to_db(user2)
-    print(select_all_userinfo())
+    # print(select_all_userinfo())
 
-
+# me = get_user_info('Mari')
+# print(me)
+# print(type(me[0]))
+# remaining = me[-1] - me[-2]
+# print(remaining)
