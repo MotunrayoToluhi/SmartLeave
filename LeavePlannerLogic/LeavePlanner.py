@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 import numpy
-from LeavePlannerLogic.Holiday_api import categorized_holiday
-
+from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
 # Functionality for leave planner
@@ -115,7 +114,6 @@ class LeavePlannerFunc:
 
             return hol_start, hol_end
 
-
     # calculates the leave days used and saved if user books this holiday off
     # tells user the date range they should use for their holiday and how many leave days they used and saves
     def leave_days_used(self):
@@ -139,9 +137,8 @@ class LeavePlannerFunc:
     def run_leave_planner(self):
         self.leave_days_used()
 
-
-
 # runs program
 # if __name__ == "__main__":
 #     leave_planner = LeavePlannerFunc()
 #     leave_planner.leave_days_used()
+

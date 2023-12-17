@@ -1,9 +1,7 @@
 import requests
 from datetime import datetime
-from LeavePlannerLogic.DateCategories import seasons_data
+from Final_project.LeavePlannerLogic.DateCategories import seasons_data
 
-# app.route() as an abstract method for oop?
-# helen showed this at the beginning of lesson
 def get_API_holidays():
     url = 'https://www.gov.uk/bank-holidays.json'
     response = requests.get(url)
@@ -24,7 +22,9 @@ def just_bank_holidays(hols_list):
         list_of_dates.append(date_x)
     return list_of_dates
 
+
 bank_holidays = just_bank_holidays(holidays)
+
 
 # categorizing the holidays gotten from the api into seasons
 def categorize_by_season():
@@ -54,9 +54,3 @@ def categorize_by_season():
 
 
 categorized_holiday = categorize_by_season()
-
-#
-# # Test dictionary
-# print(categorized_holiday)
-# for key, holidays_list in categorized_holiday.items():
-#     print(f"{key}: {holidays_list}")
