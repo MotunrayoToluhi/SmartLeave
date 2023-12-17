@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import numpy
-from LeavePlannerLogic.Holiday_api import categorized_holiday
+from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday, bank_holidays
 
 
 
@@ -14,7 +14,8 @@ class LeavePlannerFunc:
 
     def __init__(self):
         # self.next_bank = self.next_bank_holiday()
-        # self.birthday = self.birthday_off()
+        self.birthday = self.birthday_off()
+        self.next_bank = self.next_bank_holiday()
         self.max_leave = self.leave_entitlement()
         self.days_of_holiday = self.holiday_length()
         self.holiday_year = self.user_chosen_year()
@@ -26,28 +27,28 @@ class LeavePlannerFunc:
         self.date_list = [holiday["date"] for holiday in self.filtered_year_season[self.holiday_season]]
 
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
-        # self.calc_holiday_date = self.calc_holiday_date()
-        self.run_leave_planner = self.run_leave_planner
+        self.calc_holiday_date()
+        self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
 
     # function to get next bank holiday
-    # def next_bank_holiday(bank_hol):
-    #     today = datetime.datetime.now().date()
-    #     next_one = min(bank_holidays, key=lambda x: abs(x - today))
-    #     return next_one
-    #
-    # # function check if birthday lands on weekend or AL or neither
-    # def birthday_off(birthday):
-    #     date_birthday = datetime.datetime.strptime(birthday, '%Y-%m-%d').date()
-    #     print(date_birthday)
-    #     bday_hol = any(date_birthday == num for num in bank_holidays)
-    #     print(bday_hol)
-    #     if bday_hol == False:
-    #         if date_birthday.weekday() >= 5:
-    #             return True
-    #         elif date_birthday.weekday() < 5:
-    #             return False
-    #     else:
-    #         return True
+    def next_bank_holiday(bank_hol):
+        today = datetime.now().date()
+        next_one = min(bank_holidays, key=lambda x: abs(x - today))
+        return next_one
+
+    # function check if birthday lands on weekend or AL or neither
+    def birthday_off(birthday):
+        date_birthday = datetime.strptime(birthday, '%Y-%m-%d').date()
+        print(date_birthday)
+        bday_hol = any(date_birthday == num for num in bank_holidays)
+        print(bday_hol)
+        if bday_hol == False:
+            if date_birthday.weekday() >= 5:
+                return True
+            elif date_birthday.weekday() < 5:
+                return False
+        else:
+            return True
     #
     # # need to re-write this in to __init__
     # def maximise(listofbankhols, year):
@@ -195,16 +196,9 @@ class LeavePlannerFunc:
                 leave_days_used = numpy.busday_count(hol_start, hol_end) - 1
                 leave_saved = self.days_of_holiday - leave_days_used
                 print("You have used", leave_days_used, "leave days and have saved", leave_saved, "days")
-    def run_leave_planner(self):
-
-        self.leave_days_used()
-
-
-
-
 
 
 # runs program
-# if __name__ == "__main__":
-#     leave_planner = LeavePlannerFunc()
-#     leave_planner.leave_days_used()
+if __name__ == "__main__":
+    leave_planner = LeavePlanner()
+    leave_planner.leave_days_used()

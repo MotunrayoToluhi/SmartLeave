@@ -1,14 +1,12 @@
 import random
 from datetime import datetime, timedelta
-from LeavePlannerLogic.Holiday_api import categorized_holiday
+from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
-# functionality for generating a random holiday range for the user
 class RandomHolidayGenerator:
     def __init__(self, categorized_holiday):
         self.categorized_holiday = categorized_holiday
 
-    # possible bank holiday dates in a list format that makes it easy to retrieve holiday info
     def possible_holiday_dates(self):
         all_holidays = [holiday for holidays in self.categorized_holiday.values() for holiday in holidays]
         return [
@@ -17,7 +15,6 @@ class RandomHolidayGenerator:
             if datetime.strptime(holiday.get("date", "N/A"), "%Y-%m-%d") > datetime.now()
         ]
 
-    # calculates a random holiday dates and length that the user can book off
     def random_hol_calc(self):
         all_holidays = self.possible_holiday_dates()
 
@@ -30,10 +27,7 @@ class RandomHolidayGenerator:
 
         return rand_holiday_start, rand_holiday_title, rand_holiday_length, rand_holiday_end
 
-    # functionality for user interaction to tell them what holiday they should book off
-    # asks user if they want to keep generating random holidays or go back to main menu
     def random_holiday_interaction(self):
-        generate_holiday = True
         while True:
             try:
                 user_answer = input(f"Do you want to generate a random holiday? (yes or no): ")
@@ -45,26 +39,20 @@ class RandomHolidayGenerator:
                     f"You will be going on a {result[1]} getaway for {result[2]} days, from {result[0]} till {result[3]}!")
                 while True:
                     user_choice = input(
-                        "Do you want to exit or continue with this program? (continue/exit): ")
-                    if user_choice.lower() == "continue":
+                        "Do you want to generate a new random holiday or return to the main menu? (generate/return): ")
+                    if user_choice.lower() == "generate":
 
                         break
-                    elif user_choice.lower() == "exit":
-                        generate_holiday = False
-                        break
+                    elif user_choice.lower() == "return":
+                        exit()
                     else:
-                        print("Please respond with either continue or exit.")
+                        print("Please respond with generate or return.")
             elif user_answer.lower() == "no":
-                break
+                exit()
             else:
                 print("Please respond with yes or no.")
-    def run(self):
-        self.possible_holiday_dates()
-        self.random_hol_calc()
-        self.random_holiday_interaction()
 
 
-
-# if __name__ == "__main__":
-#     randomizer = RandomHolidayGenerator(categorized_holiday)
-#     randomizer.random_holiday_interaction()
+if __name__ == "__main__":
+    randomizer = RandomHolidayGenerator(categorized_holiday)
+    randomizer.random_holiday_interaction()

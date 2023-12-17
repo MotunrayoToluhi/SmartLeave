@@ -10,7 +10,7 @@ class HolidayRequest:
                 "off? Answer 'y' or 'n'").format(self.season, self.total_days, self.annual_leave)
 
 
-hol_request_1 = HolidayRequest("summer", 5, 2)
+# hol_request_1 = HolidayRequest("summer", 5, 2)
 
 #print(hol_request_1.confirm_request())
 
