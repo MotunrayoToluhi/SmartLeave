@@ -138,9 +138,6 @@ class LeavePlannerFunc:
 
         return
 
-# leave_planner = LeavePlannerFunc()
-# your_holiday = leave_planner.leave_days_used()
-
 
 # runs program
 if __name__ == "__main__":
