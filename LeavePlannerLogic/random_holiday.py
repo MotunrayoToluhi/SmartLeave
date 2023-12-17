@@ -3,10 +3,12 @@ from datetime import datetime, timedelta
 from LeavePlannerLogic.API_Logic.Holiday_api import categorized_holiday
 
 
+# functionality for generating a random holiday range for the user
 class RandomHolidayGenerator:
     def __init__(self, categorized_holiday):
         self.categorized_holiday = categorized_holiday
 
+    # possible bank holiday dates in a list format that makes it easy to retrieve holiday info
     def possible_holiday_dates(self):
         all_holidays = [holiday for holidays in self.categorized_holiday.values() for holiday in holidays]
         return [
@@ -15,6 +17,7 @@ class RandomHolidayGenerator:
             if datetime.strptime(holiday.get("date", "N/A"), "%Y-%m-%d") > datetime.now()
         ]
 
+    # calculates a random holiday dates and length that the user can book off
     def random_hol_calc(self):
         all_holidays = self.possible_holiday_dates()
 
@@ -27,6 +30,8 @@ class RandomHolidayGenerator:
 
         return rand_holiday_start, rand_holiday_title, rand_holiday_length, rand_holiday_end
 
+    # functionality for user interaction to tell them what holiday they should book off
+    # asks user if they want to keep generating random holidays or go back to main menu
     def random_holiday_interaction(self):
         while True:
             try:
