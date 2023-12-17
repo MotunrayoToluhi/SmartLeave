@@ -12,5 +12,17 @@ class HolidayRequest:
 
 hol_request_1 = HolidayRequest("summer", 5, 2)
 
-print(hol_request_1.confirm_request())
+#print(hol_request_1.confirm_request())
+
+# creating a class for handling members
+
+class User:
+    def __init__(self, user_name, user_total_al, user_remaining_al):
+        self.user_name = user_name
+        self.user_total_al = user_total_al
+        self.user_remaining_al = user_remaining_al
+
+
+
+
 
