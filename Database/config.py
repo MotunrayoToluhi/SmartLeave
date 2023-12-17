@@ -1,4 +1,4 @@
 HOST = "127.0.0.1"
 USER = "root"
-PASSWORD = "1tsAnavacad0!"
+PASSWORD = ""
 DATABASE = "SmartLeave"
