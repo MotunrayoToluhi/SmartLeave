@@ -2,7 +2,7 @@
 # Smart Leave 
 ## CFG-Degree Team 7 Final Project
 Welcome to SmartLeave!
-### About the project:
+### About the project: 
 Ever thought about how to ensure you are making the absolute *MOST* of the annual leave you get? Well, think no more! Let us introduce to you: ***SmartLeave.***
 
 Smart Leave is an application that helps the user optimise their annual leave given according to the England and Wales public holidays.
