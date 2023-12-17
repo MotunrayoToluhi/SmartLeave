@@ -50,8 +50,27 @@ def further_options():
         new_remaining_al = remaining_al - int(day_change)
         update_used_al(user_name, new_remaining_al)
         print(f"You have updated our records, you now have {new_remaining_al} days of annual leave remaining.")
+        email = input('Would you like a template email to send your manager? Y/N:')
+        if email.lower() == 'yes' or email.lower() == 'y':
+            date_from = input('What will be you start date? ')
+            date_to = input('What will be you end date? ')
+            time_off_email(day_change, date_from, date_to, new_remaining_al, user_name)
     elif update.lower() == 'no' or update.lower() == 'n':
         return
 
 
-# further_options()
+def time_off_email(number_of_days, date_one, date_two, now_remaining_al, name):
+    with open('dear_manager.txt', 'w+') as manager_email:
+        manager_email.write(
+            f'''
+          Dear Sir/Madam,
+          
+          I wish to request off {number_of_days} from {date_one} to {date_two}.
+          These should leave me with {now_remaining_al} days of annual leave remaining..
+
+          Kind Regards,
+          {name}.
+          '''
+        )
+
+further_options()
