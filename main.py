@@ -42,7 +42,7 @@ class SmartLeave(UserInputs):
         if next_step.lower() == "a":
             print("The next bank holiday is", UserOptions.next_bank_holiday(bank_holidays))
             return self.user_options()
-
+        # LAST ONE TO FIX
         elif next_step.lower() == "b":
             print("The closet together bank holidays next year are:", )
             UserInputs.further_options()
