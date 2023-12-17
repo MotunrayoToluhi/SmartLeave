@@ -5,6 +5,8 @@ import logging
 
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
+
+
 class DbConnectionError(Exception):
     pass
 
@@ -113,7 +115,8 @@ def update_used_al(user_name, remaining_al):
         db_connection = _connect_to_db(db_name)
         cur = db_connection.cursor()
 
-        cur.execute(''' UPDATE user_info SET user_remaining_al =  %s WHERE user_name = %s ''', (remaining_al, user_name))
+        cur.execute(''' UPDATE user_info SET user_remaining_al =  %s WHERE user_name = %s ''',
+                    (remaining_al, user_name))
         db_connection.commit()
         return
 
@@ -123,7 +126,9 @@ def update_used_al(user_name, remaining_al):
     finally:
         if db_connection:
             db_connection.close()
-            print("DB connection is closed")
+            # print("DB connection is closed")
+            pass
+
 
 # test if it works with this sample usage
 

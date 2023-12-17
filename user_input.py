@@ -23,7 +23,7 @@ def new_or_recurring():
             print(f"You originally had {total_al} days of annual leave. You currently have {remaining_al} days remaining.")
             return user_data
         except Exception:
-            raise TypeError('Your data is not recognise; please check you spelling or start again')
+            raise TypeError('Your data is not recognised; please check you spelling or start again')
     # add new user to db
     elif db_or_not_db.lower() == 'n' or db_or_not_db.lower() == 'no':
         print('Welcome to easier holiday planning, please enter your required info:')

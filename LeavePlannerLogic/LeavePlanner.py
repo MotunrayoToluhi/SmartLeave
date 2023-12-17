@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import numpy
-from LeavePlannerLogic.API_Logic.Holiday_api import categorized_holiday
+from LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
 
@@ -26,9 +26,8 @@ class LeavePlannerFunc:
         self.date_list = [holiday["date"] for holiday in self.filtered_year_season[self.holiday_season]]
 
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
-        self.calc_holiday_date()
-        self.date_obj_list = [datetime.datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
-
+        # self.calc_holiday_date = self.calc_holiday_date()
+        self.run_leave_planner = self.run_leave_planner
 
     # function to get next bank holiday
     # def next_bank_holiday(bank_hol):
@@ -196,9 +195,16 @@ class LeavePlannerFunc:
                 leave_days_used = numpy.busday_count(hol_start, hol_end) - 1
                 leave_saved = self.days_of_holiday - leave_days_used
                 print("You have used", leave_days_used, "leave days and have saved", leave_saved, "days")
+    def run_leave_planner(self):
+
+        self.leave_days_used()
+
+
+
+
 
 
 # runs program
-if __name__ == "__main__":
-    leave_planner = LeavePlanner()
-    leave_planner.leave_days_used()
+# if __name__ == "__main__":
+#     leave_planner = LeavePlannerFunc()
+#     leave_planner.leave_days_used()
