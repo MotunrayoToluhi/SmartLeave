@@ -28,8 +28,8 @@ class UserOptions:
         else:
             return True
 
+    # gets 2 bank holidays with the shortest time between them
     def close_bank_hols(listofbankhols, year):
-        # getting just that years holidays plus new years day
         next_year = int(year) + 1
         the_year = datetime.datetime.strptime(year, '%Y').date()
         next_year = datetime.datetime.strptime(str(next_year), '%Y').date()
@@ -41,8 +41,12 @@ class UserOptions:
         for i in range(l):
             for x in range(i + 1, l):
                 days = this_years_bank_hols[x] - this_years_bank_hols[i]
-                # get all bank holidays that have less than a week between them
                 if days <= seven_days:
                     int_days = days.days
                     return int_days, str(this_years_bank_hols[x]), str(this_years_bank_hols[i])
 
+
+# UserOptions.close_bank_hols(bank_holidays, '2024')
+
+closet = UserOptions.close_bank_hols(bank_holidays, '2024')
+print(f"The closet together bank holidays in the next year are: {closet[1]} and {closet[2]} with {closet[0]} days between.")

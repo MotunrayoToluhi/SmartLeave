@@ -7,7 +7,7 @@ class RandomHolidayGenerator:
     def __init__(self, categorized_holiday):
         self.categorized_holiday = categorized_holiday
 
-    #creating list for holidays that can be picked as a random holiday
+    # creating list for holidays that can be picked as a random holiday
     def possible_holiday_dates(self):
         all_holidays = [holiday for holidays in self.categorized_holiday.values() for holiday in holidays]
         return [
@@ -29,7 +29,7 @@ class RandomHolidayGenerator:
 
         return rand_holiday_start, rand_holiday_title, rand_holiday_length, rand_holiday_end
 
-    #user interacction thet tels user what random holiday they should go on
+    # user interaction the tells user what random holiday they should go on
     def random_holiday_interaction(self):
             try:
                 user_answer = input(f"Do you want to generate a random holiday? (yes or no): ")

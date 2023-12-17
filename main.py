@@ -30,7 +30,7 @@ class SmartLeave(UserInputs):
         Main menu:
               Would you like to:
                 a) Know when the next bank holiday is?
-                b) Know when the closest together bank holidays are next year?
+                b) Know when the closest together bank holidays are?
                 c) Get help maximizing your annual leave for your next holiday?
                 d) Prevent burnout by knowing which season has the least bank holidays?
                 e) Know if your birthday is on a bank holiday or weekend this year?
@@ -43,9 +43,9 @@ class SmartLeave(UserInputs):
             print("The next bank holiday is", UserOptions.next_bank_holiday(bank_holidays))
             return self.user_options()
         elif next_step.lower() == "b":
-            year = '2024'
+            year = input('For which year: 2023, 2024 or 2025? ')
             closet = UserOptions.close_bank_hols(bank_holidays, year)
-            print("The closet together bank holidays in the next year are:", closet)
+            print(f"The closet together bank holidays in the next year are: {closet[1]} and {closet[2]} with {closet[0]} days between.")
             UserInputs.further_options(self)
             return self.user_options()
 
