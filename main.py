@@ -1,15 +1,15 @@
-from user_input import new_or_recurring, further_options
+from user_input import UserInputs
 from LeavePlannerLogic.LeavePlanner import LeavePlannerFunc
 from LeavePlannerLogic.Holiday_api import bank_holidays, categorized_holiday
 from LeavePlannerLogic.random_holiday import RandomHolidayGenerator
 from LeavePlannerLogic.OtherOptions import UserOptions
 
-
-class SmartLeave:
+# inherits from UserInputs
+class SmartLeave(UserInputs):
     def __init__(self):
         self.user_intro_info = self.user_intro_info()
         self.user_options = self.user_options()
-        # self.further_options =  self.further_options()
+        super().__init__()
 
     def user_intro_info(self):
         print("""
@@ -21,7 +21,7 @@ class SmartLeave:
                     """)
 
         # Retrieve user data from the database or add them as user
-        user_data = new_or_recurring()
+        user_data = UserInputs.new_or_recurring(self)
 
 
     def user_options(self):
@@ -45,13 +45,13 @@ class SmartLeave:
 
         elif next_step.lower() == "b":
             print("The closet together bank holidays next year are:", )
-            further_options()
+            UserInputs.further_options()
             return self.user_options()
 
         elif next_step.lower() == "c":
                 leave_planner = LeavePlannerFunc()
                 your_holiday = leave_planner.leave_days_used()
-                further_options()
+                UserInputs.further_options()
                 return your_holiday, self.user_options()
 
         elif next_step.lower() == "d":
@@ -67,13 +67,13 @@ class SmartLeave:
                  print("Sorry, you're birthday does not land on a bank holiday or weekend.")
                else:
                     print("Yay - no need use Annual Leave. Your birthday lands on either a bank holiday or weekend.")
-               further_options()
+               UserInputs.further_options()
                return self.user_options()
 
         elif next_step.lower() == "f":
                 random = RandomHolidayGenerator(categorized_holiday=categorized_holiday)
                 RandomHolidayGenerator.random_holiday_interaction(random)
-                further_options()
+                UserInputs.further_options()
                 return self.user_options()
 
         elif next_step.lower() == "g":
