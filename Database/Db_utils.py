@@ -1,21 +1,27 @@
 from Database.config import HOST, USER, PASSWORD
 import mysql.connector
 from classes_file import User
+import logging
 
-
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger(__name__)
 class DbConnectionError(Exception):
     pass
 
 
 def _connect_to_db(db_name):
-    cnx = mysql.connector.connect(
-        host=HOST,
-        user=USER,
-        password=PASSWORD,
-        auth_plugin='mysql_native_password',
-        database=db_name
-    )
-    return cnx
+    try:
+        cnx = mysql.connector.connect(
+            host=HOST,
+            user=USER,
+            password=PASSWORD,
+            auth_plugin='mysql_native_password',
+            database=db_name
+        )
+        return cnx
+    except mysql.connector.Error as err:
+        logger.error("Connection to database failed")
+        raise DbConnectionError("Connection to database failed") from err
 
 
 # add user to  database
