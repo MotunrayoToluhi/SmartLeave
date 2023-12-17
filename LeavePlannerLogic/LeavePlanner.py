@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import numpy
-from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday, bank_holidays
+from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
 
@@ -13,9 +13,6 @@ from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday, ban
 class LeavePlannerFunc:
 
     def __init__(self):
-        # self.next_bank = self.next_bank_holiday()
-        self.birthday = self.birthday_off()
-        self.next_bank = self.next_bank_holiday()
         self.max_leave = self.leave_entitlement()
         self.days_of_holiday = self.holiday_length()
         self.holiday_year = self.user_chosen_year()
@@ -29,29 +26,6 @@ class LeavePlannerFunc:
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
         self.calc_holiday_date()
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
-
-
-    #
-    # # need to re-write this in to __init__
-    # def maximise(listofbankhols, year):
-    #     # getting just that years holidays plus new years day
-    #     next_year = int(year) + 1
-    #     the_year = datetime.datetime.strptime(year, '%Y').date()
-    #     next_year = datetime.datetime.strptime(str(next_year), '%Y').date()
-    #     this_years_bank_hols = [date for date in listofbankhols if the_year <= date <= next_year]
-    #     time_differences = []
-    #     # getting the lenght of time between bank holidays
-    #     l = len(this_years_bank_hols)
-    #     seven_days = datetime.timedelta(days=7)
-    #     for i in range(l):
-    #         for x in range(i + 1, l):
-    #             days = this_years_bank_hols[x] - this_years_bank_hols[i]
-    #             # get all bank holidays that have less than a week between them
-    #             if days <= seven_days:
-    #                 return (days, this_years_bank_hols[x], this_years_bank_hols[i])
-                # print(this_years_bank_hols[x], this_years_bank_hols[i], days)
-
-    # print(maximise(bank_holidays, '2024'))
 
 
     # asks user max leave entitlement they have
@@ -89,20 +63,6 @@ class LeavePlannerFunc:
             else:
                 print("year must be 2023, 2024 or 2025")
         return preferred_year
-
-    # asks user how many days notice they need to give their employer before booking a holiday
-    #     def days_notice(self):
-    #         while True:
-    #             user_days_notice = input(f"How many days notice do you need to give your employer?: ")
-    #             if user_days_notice.isdigit():
-    #                 user_days_notice = int(user_days_notice)
-    #                 if 0 < user_days_notice < 365:
-    #                     break
-    #                 else:
-    #                     print("Days must be more than zero and less than 365.")
-    #             else:
-    #                 print(f"Please enter a valid positive number.")
-    #         return user_days_notice
 
     # asks user how long they want their holiday to be
     def holiday_length(self):
@@ -179,8 +139,16 @@ class LeavePlannerFunc:
                 leave_saved = self.days_of_holiday - leave_days_used
                 print("You have used", leave_days_used, "leave days and have saved", leave_saved, "days")
 
+        return
+#
+#
+# leave_planner = LeavePlannerFunc()
+# your_holiday = leave_planner.leave_days_used()
 
 # runs program
 if __name__ == "__main__":
     leave_planner = LeavePlannerFunc()
     leave_planner.leave_days_used()
+
+
+

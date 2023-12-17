@@ -42,49 +42,44 @@ class SmartLeave:
                 f) Exit SmartLeave
               """)
         next_step = input("Letter?: ")
+
         if next_step.lower() == "a":
             print("The next bank holiday is", UserOptions.next_bank_holiday(bank_holidays))
             return self.user_options()
+
         elif next_step.lower() == "b":
             print("The closet together bank holidays next year are:", )
-
+            # return("The closet together bank holidays next year are:", )
             return self.user_options()
 
         elif next_step.lower() == "c":
-            LeavePlannerFunc()
-            # print("yes")  # test to see if while true works by itself
-            while True:
-                user_choice = input(
-                    "Do you want to exit or continue with this program? (continue/exit): ")
-                if user_choice.lower() == "continue":
-                    LeavePlannerFunc()
-                    break
-                elif user_choice.lower() == "exit":
-                    self.user_options()
-                    break
-                else:
-                    print("Please respond with either continue or exit.")
+            # while True:
+                leave_planner = LeavePlannerFunc()
+                your_holiday = leave_planner.leave_days_used()
+                # print(your_holiday)
+                return your_holiday, self.user_options()
         elif next_step.lower() == "c":
             print("There are no bank holidays in autumn. We suggest you consider booking your holiday in another "
-                  "season.")
+                      "season.")
             return self.user_options()
 
         elif next_step.lower() == "d":
-            my_birthday = input(
-                "Please input your birthday in format mm-dd, please include the year in which you are hoping to "
-                "have off eg 2024-03-25: ")
-            if not UserOptions.birthday_off(my_birthday):
-                print("Sorry, you're birthday does not land on a bank holiday or weekend.")
-            else:
-                print("Yay - no need use Annual Leave. Your birthday lands on either a bank holiday or weekend.")
-            return self.user_options()
+               my_birthday = input(
+                    "Please input your birthday in format mm-dd, please include the year in which you are hoping to "
+                    "have off eg 2024-03-25: ")
+               if not UserOptions.birthday_off(my_birthday):
+                 print("Sorry, you're birthday does not land on a bank holiday or weekend.")
+               else:
+                    print("Yay - no need use Annual Leave. Your birthday lands on either a bank holiday or weekend.")
+               return self.user_options()
+
         elif next_step.lower() == "e":
-            random = RandomHolidayGenerator(categorized_holiday=categorized_holiday)
-            RandomHolidayGenerator.random_holiday_interaction(random)
-            return self.user_options()
+                random = RandomHolidayGenerator(categorized_holiday=categorized_holiday)
+                RandomHolidayGenerator.random_holiday_interaction(random)
+                return self.user_options()
         elif next_step.lower() == "f":
-            print("Goodbye - Have a wonderful day!")
-            exit()
+                print("Goodbye - Have a wonderful day!")
+                exit()
         else:
             print("Please try again and type either 'y' or 'n'. ")
 
