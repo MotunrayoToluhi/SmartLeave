@@ -17,9 +17,9 @@ class UserOptions:
     # function check if birthday lands on weekend or AL or neither
     def birthday_off(birthday):
         date_birthday = datetime.datetime.strptime(birthday, '%Y-%m-%d').date()
-        print(date_birthday)
+         # print(date_birthday)
         bday_hol = any(date_birthday == num for num in bank_holidays)
-        print(bday_hol)
+        # print(bday_hol)
         if not bday_hol:
             if date_birthday.weekday() >= 5:
                 return True
