@@ -133,7 +133,7 @@ class LeavePlannerFunc:
                 leave_days_used = numpy.busday_count(hol_start, hol_end) - 1
                 leave_saved = self.days_of_holiday - leave_days_used
                 print("You have used", leave_days_used, "leave days and have saved", leave_saved, "days")
-
+    
     def run_leave_planner(self):
         self.leave_days_used()
 
