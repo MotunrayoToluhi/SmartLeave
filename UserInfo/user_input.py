@@ -1,5 +1,5 @@
 from Final_project.Database.Db_utils import get_user_info, add_user_to_db, update_used_al
-from user_object import User
+from Final_project.UserInfo.user_object import User
 
 
 class UserInputs:

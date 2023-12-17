@@ -1,4 +1,4 @@
-from Final_project.UserInfo.user_input import UserInputs
+from UserInfo.user_input import UserInputs
 from LeavePlannerLogic.LeavePlanner import LeavePlannerFunc
 from LeavePlannerLogic.Holiday_api import bank_holidays, categorized_holiday
 from LeavePlannerLogic.random_holiday import RandomHolidayGenerator
