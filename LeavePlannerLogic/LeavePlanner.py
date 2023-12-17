@@ -30,25 +30,7 @@ class LeavePlannerFunc:
         self.calc_holiday_date()
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
 
-    # function to get next bank holiday
-    def next_bank_holiday(bank_hol):
-        today = datetime.now().date()
-        next_one = min(bank_holidays, key=lambda x: abs(x - today))
-        return next_one
 
-    # function check if birthday lands on weekend or AL or neither
-    def birthday_off(birthday):
-        date_birthday = datetime.strptime(birthday, '%Y-%m-%d').date()
-        print(date_birthday)
-        bday_hol = any(date_birthday == num for num in bank_holidays)
-        print(bday_hol)
-        if bday_hol == False:
-            if date_birthday.weekday() >= 5:
-                return True
-            elif date_birthday.weekday() < 5:
-                return False
-        else:
-            return True
     #
     # # need to re-write this in to __init__
     # def maximise(listofbankhols, year):
@@ -200,5 +182,5 @@ class LeavePlannerFunc:
 
 # runs program
 if __name__ == "__main__":
-    leave_planner = LeavePlanner()
+    leave_planner = LeavePlannerFunc()
     leave_planner.leave_days_used()

@@ -28,7 +28,7 @@ class RandomHolidayGenerator:
         return rand_holiday_start, rand_holiday_title, rand_holiday_length, rand_holiday_end
 
     def random_holiday_interaction(self):
-        while True:
+        # while True:
             try:
                 user_answer = input(f"Do you want to generate a random holiday? (yes or no): ")
             except Exception as e:
@@ -37,18 +37,9 @@ class RandomHolidayGenerator:
                 result = self.random_hol_calc()
                 print(
                     f"You will be going on a {result[1]} getaway for {result[2]} days, from {result[0]} till {result[3]}!")
-                while True:
-                    user_choice = input(
-                        "Do you want to generate a new random holiday or return to the main menu? (generate/return): ")
-                    if user_choice.lower() == "generate":
 
-                        break
-                    elif user_choice.lower() == "return":
-                        exit()
-                    else:
-                        print("Please respond with generate or return.")
             elif user_answer.lower() == "no":
-                exit()
+                return
             else:
                 print("Please respond with yes or no.")
 
