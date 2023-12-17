@@ -1,17 +1,4 @@
-# def get_user_name():
-#     name = input("Welcome to SmartLeave! What's your name? ")
-#
-#     return name
-
-#
-# class SmartLeaveApp:
-#     def __init__(self):
-#         self.user_name = ""
-#
-#     def get_user_name(self):
-#         self.user_name = input("Welcome to SmartLeave! What's your name? ")
-
-from Database.Db_utils import get_user_info, add_user_to_db
+from Database.Db_utils import get_user_info, add_user_to_db, update_used_al
 from classes_file import User
 
 def new_or_recurring():
@@ -37,20 +24,34 @@ def new_or_recurring():
         new_user_name = input('What is your name? ')
         new_user_all_al = input('What is your allocation of annual leave? ')
         new_user_al_left = input('How many days of annual leave do you have left? ')
-        try:
-            if new_user_all_al < new_user_al_left:
-                raise Exception
+        if new_user_all_al > new_user_al_left:
+            print('Your annual leave calculations are incorrect.\nYou cannot have more leave left than leave allocation\nLet\'s start again. ')
+            new_or_recurring()
+        else:
             user_data = User(new_user_name, new_user_all_al, new_user_al_left)
             add_user_to_db(user_data)
             print(f"You originally had {new_user_all_al} days of annual leave. You currently have {new_user_al_left} days remaining.")
             return user_data
-        except:
-            print('Your annual leave calculations are incorrect:\nYou cannot have more leave left than leave allocation' )
     else:
-        print("Please input your name using letters only")
-        return get_user_name()
-    return name
-# get_user_name()
+        print("Your data is not recognise, please try again.")
+        new_or_recurring()
+        return
+    # return
 
 
+def further_options():
+    update = input('Would you like to book any days off? Y/N: ')
+    if update.lower() == 'yes' or update.lower() == 'y':
+        user_name = input('Please confirm your name: ')
+        user_data = get_user_info(user_name)
+        remaining_al = user_data[3]
+        print(f"You currently have {remaining_al} days of annual leave remaining.")
+        day_change = input('How many days would you like to book?: ')
+        new_remaining_al = remaining_al - int(day_change)
+        update_used_al(user_name, new_remaining_al)
+        print(f"You have updated our records, you now have {new_remaining_al} days of annual leave remaining.")
+    elif update.lower() == 'no' or update.lower() == 'n':
+        return
 
+
+# further_options()

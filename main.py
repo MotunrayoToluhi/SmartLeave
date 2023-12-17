@@ -1,17 +1,15 @@
-from abc import abstractmethod
-
-from user_input import new_or_recurring
+from user_input import new_or_recurring, further_options
 from LeavePlannerLogic.LeavePlanner import LeavePlannerFunc
 from LeavePlannerLogic.Holiday_api import bank_holidays, categorized_holiday
 from LeavePlannerLogic.random_holiday import RandomHolidayGenerator
 from LeavePlannerLogic.OtherOptions import UserOptions
 
 
-# Ask user whether they need more from the app or do they want to quit.
 class SmartLeave:
     def __init__(self):
         self.user_intro_info = self.user_intro_info()
         self.user_options = self.user_options()
+        # self.further_options =  self.further_options()
 
     def user_intro_info(self):
         print("""
@@ -28,18 +26,16 @@ class SmartLeave:
 
     def user_options(self):
 
-        # user_choice = input("Do you need more help from SmartLeave today? Y/N: ")
-        # if user_choice == 'y':
         print("""
         Main menu:
               Would you like to:
                 a) Know when the next bank holiday is?
                 b) Know when the closest together bank holidays are next year?
                 c) Get help maximizing your annual leave for your next holiday?
-                c) Prevent burnout by knowing which season has the least bank holidays?
-                d) Know if your birthday is on a bank holiday or weekend this year?
-                e) Lets the faiths decide when you should book your leave?
-                f) Exit SmartLeave
+                d) Prevent burnout by knowing which season has the least bank holidays?
+                e) Know if your birthday is on a bank holiday or weekend this year?
+                f) Lets the faiths decide when you should book your leave?
+                g) Exit SmartLeave
               """)
         next_step = input("Letter?: ")
 
@@ -49,21 +45,21 @@ class SmartLeave:
 
         elif next_step.lower() == "b":
             print("The closet together bank holidays next year are:", )
-            # return("The closet together bank holidays next year are:", )
+            further_options()
             return self.user_options()
 
         elif next_step.lower() == "c":
-            # while True:
                 leave_planner = LeavePlannerFunc()
                 your_holiday = leave_planner.leave_days_used()
-                # print(your_holiday)
+                further_options()
                 return your_holiday, self.user_options()
-        elif next_step.lower() == "c":
+
+        elif next_step.lower() == "d":
             print("There are no bank holidays in autumn. We suggest you consider booking your holiday in another "
                       "season.")
             return self.user_options()
 
-        elif next_step.lower() == "d":
+        elif next_step.lower() == "e":
                my_birthday = input(
                     "Please input your birthday in format mm-dd, please include the year in which you are hoping to "
                     "have off eg 2024-03-25: ")
@@ -71,13 +67,16 @@ class SmartLeave:
                  print("Sorry, you're birthday does not land on a bank holiday or weekend.")
                else:
                     print("Yay - no need use Annual Leave. Your birthday lands on either a bank holiday or weekend.")
+               further_options()
                return self.user_options()
 
-        elif next_step.lower() == "e":
+        elif next_step.lower() == "f":
                 random = RandomHolidayGenerator(categorized_holiday=categorized_holiday)
                 RandomHolidayGenerator.random_holiday_interaction(random)
+                further_options()
                 return self.user_options()
-        elif next_step.lower() == "f":
+
+        elif next_step.lower() == "g":
                 print("Goodbye - Have a wonderful day!")
                 exit()
         else:

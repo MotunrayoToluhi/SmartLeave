@@ -1,6 +1,6 @@
 from Final_project.Database.config import HOST, USER, PASSWORD
 import mysql.connector
-from Final_project.classes_file import User
+# from Final_project.classes_file import User
 import logging
 
 logging.basicConfig(level=logging.ERROR)
@@ -24,35 +24,7 @@ def _connect_to_db(db_name):
         raise DbConnectionError("Connection to database failed") from err
 
 
-# add user to  database
-def select_all_userinfo():
-    try:
-        db_name = "SmartLeave"
-        db_connection = _connect_to_db(db_name)
-        cur = db_connection.cursor()
-        # print("Connected to DB")
-
-        query = "SELECT * from user_info"
-
-        cur.execute(query)
-
-        result = cur.fetchall()
-
-        cur.close()
-
-    except Exception:
-        raise DbConnectionError("Failed to read data")
-
-    finally:
-        if db_connection:
-            db_connection.close()
-            # print("DB connection is closed")
-
-    return result
-
-
 # function to add users to the database
-
 def add_user_to_db(user):
     try:
         db_name = "SmartLeave"
@@ -106,7 +78,7 @@ def get_user_info(user):
             db_connection.close()
             # print("DB connection is closed")
 
-
+# function to update db when user has booked leave
 def update_used_al(user_name, remaining_al):
     try:
         db_name = "SmartLeave"
@@ -124,15 +96,3 @@ def update_used_al(user_name, remaining_al):
         if db_connection:
             db_connection.close()
             # print("DB connection is closed")
-
-# test if it works with this sample usage
-
-# if __name__ == "__main__":
-    # trial user object
-    # user1 = User("Jane", 30, 25)
-    # user2 = User("Terri", 30, 25)
-
-    # add_user_to_db(user2)
-    # print(select_all_userinfo())
-
-# update_used_al('Mari', 24)
