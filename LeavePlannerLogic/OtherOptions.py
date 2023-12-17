@@ -1,5 +1,5 @@
 import datetime
-from Final_project.LeavePlannerLogic.Holiday_api import bank_holidays
+from LeavePlannerLogic.Holiday_api import bank_holidays
 
 
 class UserOptions:

@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime
-from Final_project.LeavePlannerLogic.DateCategories import seasons_data
+from LeavePlannerLogic.DateCategories import seasons_data
 
 def get_API_holidays():
     url = 'https://www.gov.uk/bank-holidays.json'

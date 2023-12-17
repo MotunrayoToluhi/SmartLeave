@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import numpy
-from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday
+from LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
 # Functionality for leave planner

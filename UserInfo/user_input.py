@@ -1,5 +1,5 @@
-from Final_project.Database.Db_utils import get_user_info, add_user_to_db, update_used_al
-from Final_project.UserInfo.user_object import User
+from Database.Db_utils import get_user_info, add_user_to_db, update_used_al
+from UserInfo.user_object import User
 
 
 class UserInputs:
@@ -58,9 +58,9 @@ class UserInputs:
             print(f"You have updated our records, you now have {new_remaining_al} days of annual leave remaining.")
             email = input('Would you like a template email to send your manager? Y/N:')
             if email.lower() == 'yes' or email.lower() == 'y':
-                date_from = input('What will be you start date? ')
-                date_to = input('What will be you end date? ')
-                UserInputs.time_off_email(day_change, date_from, date_to, new_remaining_al, user_name)
+                date_from = input('What will be your start date? ')
+                date_to = input('What will be your end date? ')
+                UserInputs.time_off_email(self, day_change, date_from, date_to, new_remaining_al, user_name)
             else:
                 return
         elif update.lower() == 'no' or update.lower() == 'n':

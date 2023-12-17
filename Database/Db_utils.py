@@ -1,4 +1,4 @@
-from Final_project.Database.config import HOST, USER, PASSWORD
+from Database.config import HOST, USER, PASSWORD
 import mysql.connector
 import logging
 
