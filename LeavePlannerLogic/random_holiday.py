@@ -1,6 +1,6 @@
 import random
 from datetime import datetime, timedelta
-from LeavePlannerLogic.API_Logic.Holiday_api import categorized_holiday
+from LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
 class RandomHolidayGenerator:

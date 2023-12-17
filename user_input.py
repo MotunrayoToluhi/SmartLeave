@@ -1,5 +1,6 @@
 from Database.Db_utils import get_user_info, add_user_to_db
-from Final_project.classes_file import User
+from classes_file import User
+# from Final_project.classes_file import User
 
 # are they a new or exiting user
 # if new user add to DB

@@ -1,6 +1,6 @@
-from Final_project.config import HOST, USER, PASSWORD
+from Database.config import HOST, USER, PASSWORD
 import mysql.connector
-from Final_project.classes_file import User
+from classes_file import User
 
 
 class DbConnectionError(Exception):

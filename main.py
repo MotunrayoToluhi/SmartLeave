@@ -1,6 +1,7 @@
 from user_input import new_or_recurring
 from LeavePlannerLogic.LeavePlanner import LeavePlannerFunc
-from LeavePlannerLogic.API_Logic.Holiday_api import categorized_holiday, bank_holidays
+from LeavePlannerLogic.Holiday_api import bank_holidays
+
 
 print("""
  ____  __  __    _    ____ _____ _     _____    ___     _______ 
@@ -20,8 +21,8 @@ if user_choice == 'y':
     print("""
     Options:
           Would you like to know:
-            a) when the next bank holiday is?
-            b) know what date options you have to maximise your annual leave this year?
+            a) When the next bank holiday is?
+            b) What date options you have to maximise your annual leave?
             c) know when the quieter season is?
             d) Do I need to use AL to get my birthday off this year?
             e) lets the faiths decide when you should book your leave?
@@ -30,13 +31,16 @@ if user_choice == 'y':
     if next_step.lower() == 'a':
         print("The next bank holiday is", LeavePlannerFunc.next_bank_holiday(bank_holidays))
     elif next_step.lower() == 'b':
-        which_year = input('What would you like to use?')
+        pass
     elif next_step.lower() == 'd':
         my_birthday = input('Please input your birthday in format mm-dd /n please include the year in which you are hoping to have off eg 2024-03-25: ')
         if not LeavePlannerFunc.birthday_off(my_birthday):
             print('Sorry')
         else:
             print('Yay')
+    elif next_step.lower() == 'e':
+        pass
+
 
 
 elif user_choice == 'n':

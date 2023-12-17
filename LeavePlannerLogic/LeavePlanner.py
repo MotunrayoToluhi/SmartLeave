@@ -1,5 +1,5 @@
 import datetime
-from API_Logic.Holiday_api import categorized_holiday, bank_holidays
+from LeavePlannerLogic.Holiday_api import categorized_holiday, bank_holidays
 
 
 # FUNCTIONALITY THAT IS NOT IN OOP
