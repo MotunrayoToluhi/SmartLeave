@@ -37,8 +37,9 @@ git clone git@github.com:MotunrayoToluhi/Final_project.git
 ```
 cd Final_project
 ```
-3. Set up the SQL database and add password to the config.py file
-4. Run the main.py file
+3. Set up the SQL database and add password to the config.py file.
+4. Run the main.py file.
+5. Interact with the application within the terminal.
 
 
 
