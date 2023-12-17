@@ -23,7 +23,6 @@ class SmartLeave(UserInputs):
         # Retrieve user data from the database or add them as user
         user_data = UserInputs.new_or_recurring(self)
 
-
     def user_options(self):
 
         print("""
@@ -60,25 +59,25 @@ class SmartLeave(UserInputs):
             return self.user_options()
 
         elif next_step.lower() == "e":
-               my_birthday = input(
-                    "Please input your birthday in format mm-dd, please include the year in which you are hoping to "
-                    "have off eg 2024-03-25: ")
-               if not UserOptions.birthday_off(my_birthday):
-                 print("Sorry, you're birthday does not land on a bank holiday or weekend.")
-               else:
-                    print("Yay - no need use Annual Leave. Your birthday lands on either a bank holiday or weekend.")
-               UserInputs.further_options()
-               return self.user_options()
+            my_birthday = input(
+                "Please input your birthday in format mm-dd, please include the year in which you are hoping to "
+                "have off eg 2024-03-25: ")
+            if not UserOptions.birthday_off(my_birthday):
+                print("Sorry, you're birthday does not land on a bank holiday or weekend.")
+            else:
+                print("Yay - no need use Annual Leave. Your birthday lands on either a bank holiday or weekend.")
+            UserInputs.further_options(self)
+            return self.user_options()
 
         elif next_step.lower() == "f":
-                random = RandomHolidayGenerator(categorized_holiday=categorized_holiday)
-                RandomHolidayGenerator.random_holiday_interaction(random)
-                UserInputs.further_options()
-                return self.user_options()
+            random = RandomHolidayGenerator(categorized_holiday=categorized_holiday)
+            RandomHolidayGenerator.random_holiday_interaction(random)
+            UserInputs.further_options(self)
+            return self.user_options()
 
         elif next_step.lower() == "g":
-                print("Goodbye - Have a wonderful day!")
-                exit()
+            print("Goodbye - Have a wonderful day!")
+            exit()
         else:
             print("Please try again and type either 'y' or 'n'. ")
 
