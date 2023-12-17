@@ -1,6 +1,6 @@
 import random
 from datetime import datetime, timedelta
-from LeavePlannerLogic.API_Logic.Holiday_api import categorized_holiday
+from LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
 # functionality for generating a random holiday range for the user
@@ -33,6 +33,7 @@ class RandomHolidayGenerator:
     # functionality for user interaction to tell them what holiday they should book off
     # asks user if they want to keep generating random holidays or go back to main menu
     def random_holiday_interaction(self):
+        generate_holiday = True
         while True:
             try:
                 user_answer = input(f"Do you want to generate a random holiday? (yes or no): ")
@@ -44,20 +45,26 @@ class RandomHolidayGenerator:
                     f"You will be going on a {result[1]} getaway for {result[2]} days, from {result[0]} till {result[3]}!")
                 while True:
                     user_choice = input(
-                        "Do you want to generate a new random holiday or return to the main menu? (generate/return): ")
-                    if user_choice.lower() == "generate":
+                        "Do you want to exit or continue with this program? (continue/exit): ")
+                    if user_choice.lower() == "continue":
 
                         break
-                    elif user_choice.lower() == "return":
-                        exit()
+                    elif user_choice.lower() == "exit":
+                        generate_holiday = False
+                        break
                     else:
-                        print("Please respond with generate or return.")
+                        print("Please respond with either continue or exit.")
             elif user_answer.lower() == "no":
-                exit()
+                break
             else:
                 print("Please respond with yes or no.")
+    def run(self):
+        self.possible_holiday_dates()
+        self.random_hol_calc()
+        self.random_holiday_interaction()
 
 
-if __name__ == "__main__":
-    randomizer = RandomHolidayGenerator(categorized_holiday)
-    randomizer.random_holiday_interaction()
+
+# if __name__ == "__main__":
+#     randomizer = RandomHolidayGenerator(categorized_holiday)
+#     randomizer.random_holiday_interaction()

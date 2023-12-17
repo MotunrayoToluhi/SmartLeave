@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime
-from Static_data.DateCategories import seasons_data
+from LeavePlannerLogic.DateCategories import seasons_data
 
 # app.route() as an abstract method for oop?
 # helen showed this at the beginning of lesson

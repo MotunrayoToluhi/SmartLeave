@@ -1,25 +1,27 @@
-# from Final_project.config import HOST, USER, PASSWORD
+from Database.config import HOST, USER, PASSWORD
 import mysql.connector
-from Final_project.classes_file import User
+from classes_file import User
+import logging
 
-HOST = "127.0.0.1"
-USER = "root"
-PASSWORD = ""
-DATABASE = "SmartLeave"
-
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger(__name__)
 class DbConnectionError(Exception):
     pass
 
 
 def _connect_to_db(db_name):
-    cnx = mysql.connector.connect(
-        host=HOST,
-        user=USER,
-        password=PASSWORD,
-        auth_plugin='mysql_native_password',
-        database=db_name
-    )
-    return cnx
+    try:
+        cnx = mysql.connector.connect(
+            host=HOST,
+            user=USER,
+            password=PASSWORD,
+            auth_plugin='mysql_native_password',
+            database=db_name
+        )
+        return cnx
+    except mysql.connector.Error as err:
+        logger.error("Connection to database failed")
+        raise DbConnectionError("Connection to database failed") from err
 
 
 # add user to  database
@@ -87,11 +89,14 @@ def get_user_info(user):
         # print("Connected to DB")
 
         cur.execute(''' SELECT * FROM user_info WHERE user_name = %s ''', (user,))
-        user_info= cur.fetchone()
+        user_info = cur.fetchone()
 
-        print(user_info)
+        # print(type(user_info[0]))
+        # print(user_info)
 
         cur.close()
+        return user_info
+
 
     except Exception:
         raise DbConnectionError("Failed to read data")
@@ -101,6 +106,24 @@ def get_user_info(user):
             db_connection.close()
             # print("DB connection is closed")
 
+
+def update_used_al(user_name, remaining_al):
+    try:
+        db_name = "SmartLeave"
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+
+        cur.execute(''' UPDATE user_info SET user_remaining_al =  %s WHERE user_name = %s ''', (remaining_al, user_name))
+        db_connection.commit()
+        return
+
+    except Exception:
+        raise DbConnectionError("Failed")
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print("DB connection is closed")
 
 # test if it works with this sample usage
 
@@ -112,4 +135,4 @@ if __name__ == "__main__":
     # add_user_to_db(user2)
     print(select_all_userinfo())
 
-
+update_used_al('Mari', 24)
