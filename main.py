@@ -42,21 +42,22 @@ class SmartLeave(UserInputs):
         if next_step.lower() == "a":
             print("The next bank holiday is", UserOptions.next_bank_holiday(bank_holidays))
             return self.user_options()
-        # LAST ONE TO FIX
         elif next_step.lower() == "b":
-            print("The closet together bank holidays next year are:", )
-            UserInputs.further_options()
+            year = '2024'
+            closet = UserOptions.close_bank_hols(bank_holidays, year)
+            print("The closet together bank holidays in the next year are:", closet)
+            UserInputs.further_options(self)
             return self.user_options()
 
         elif next_step.lower() == "c":
-                leave_planner = LeavePlannerFunc()
-                your_holiday = leave_planner.leave_days_used()
-                UserInputs.further_options()
-                return your_holiday, self.user_options()
+            leave_planner = LeavePlannerFunc()
+            your_holiday = leave_planner.leave_days_used()
+            UserInputs.further_options(self)
+            return your_holiday, self.user_options()
 
         elif next_step.lower() == "d":
             print("There are no bank holidays in autumn. We suggest you consider booking your holiday in another "
-                      "season.")
+                "season.")
             return self.user_options()
 
         elif next_step.lower() == "e":
