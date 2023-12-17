@@ -10,11 +10,11 @@ Smart Leave is an application that helps the user optimise their annual leave gi
 By entering your details you are able to store information about how many annual leave days you have been given and then also how many days you have remaining.
 Then, with this application, you are able to pick one of the following options:
 <ul>
-<li>Find out the when the next bank holiday is</li>
+<li>Find out when the next bank holiday is</li>
 <li>Know when the close together bank holidays are</li>
 <li>Get help maximizing your annual leave for your next holiday</li>
 <li>Prevent burnout by knowing which season has the least bank holidays</li>
-<li>Find out if your birthday is on a bank holiday or weekend this year</li>
+<li>Find out if your birthday is on a bank holiday this year</li>
 <li>Let fate decide when you should book your leave!</li> 
 </ul>
 
