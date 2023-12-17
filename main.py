@@ -51,6 +51,10 @@ class SmartLeave:
             leave_planner = LeavePlannerFunc()
             leave_planner.run_leave_planner()
             return self.user_options()
+        elif next_step.lower() == "c":
+            print("Autumn has no bank holidays, consider going on holiday in another season to maximize your annual "
+                  "leave.")
+            return self.user_options()
 
         elif next_step.lower() == "d":
             my_birthday = input(
@@ -70,7 +74,8 @@ class SmartLeave:
             print("Goodbye - Have a wonderful day!")
             exit()
         else:
-            print("Please try again and type either 'y' or 'n'. ")
+            print("Please try again you must type one of the option a,b,c,d,e or f")
+            return self.user_options()
 
 
 
