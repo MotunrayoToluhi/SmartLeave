@@ -1,12 +1,12 @@
-from Database.Db_utils import get_user_info, add_user_to_db, update_used_al
-from classes_file import User
+from Final_project.Database.Db_utils import get_user_info, add_user_to_db, update_used_al
+from user_object import User
+
 
 class UserInputs:
     def __init__(self):
         self.new_or_recurring = self.new_or_recurring()
         self.further_options = self.further_options()
         self.time_off_email = self.time_off_email()
-
 
     def new_or_recurring(self):
         # if user is in the db, get their info. If not, add their info
@@ -43,9 +43,8 @@ class UserInputs:
             print("Your data is not recognise, please try again.")
             UserInputs.new_or_recurring(self)
             return
-        # return
 
-
+    # gives option to change db
     def further_options(self):
         update = input('Would you like to book any days off? Y/N: ')
         if update.lower() == 'yes' or update.lower() == 'y':
@@ -67,7 +66,7 @@ class UserInputs:
         elif update.lower() == 'no' or update.lower() == 'n':
             return
 
-
+    # write txt file for email template
     def time_off_email(self, number_of_days, date_one, date_two, now_remaining_al, name):
         with open('dear_manager.txt', 'w+') as manager_email:
             manager_email.write(

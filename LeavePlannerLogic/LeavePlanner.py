@@ -3,7 +3,6 @@ import numpy
 from Final_project.LeavePlannerLogic.Holiday_api import categorized_holiday
 
 
-
 # Functionality for leave planner
 # tells the user:
 # what dates they should go on holiday on based on bank holidays
@@ -26,7 +25,6 @@ class LeavePlannerFunc:
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
         self.calc_holiday_date()
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
-
 
     # asks user max leave entitlement they have
     def leave_entitlement(self):
@@ -118,7 +116,6 @@ class LeavePlannerFunc:
 
             return hol_start, hol_end
 
-
     # calculates the leave days used and saved if user books this holiday off
     # tells user the date range they should use for their holiday and how many leave days they used and saves
     def leave_days_used(self):
@@ -140,10 +137,10 @@ class LeavePlannerFunc:
                 print("You have used", leave_days_used, "leave days and have saved", leave_saved, "days")
 
         return
-#
-#
+
 # leave_planner = LeavePlannerFunc()
 # your_holiday = leave_planner.leave_days_used()
+
 
 # runs program
 if __name__ == "__main__":

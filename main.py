@@ -1,10 +1,11 @@
-from user_input import UserInputs
+from Final_project.UserInfo.user_input import UserInputs
 from LeavePlannerLogic.LeavePlanner import LeavePlannerFunc
 from LeavePlannerLogic.Holiday_api import bank_holidays, categorized_holiday
 from LeavePlannerLogic.random_holiday import RandomHolidayGenerator
 from LeavePlannerLogic.OtherOptions import UserOptions
 
-# inherits from UserInputs
+
+# SmartLeave inherits from UserInputs in the user_input file
 class SmartLeave(UserInputs):
     def __init__(self):
         self.user_intro_info = self.user_intro_info()

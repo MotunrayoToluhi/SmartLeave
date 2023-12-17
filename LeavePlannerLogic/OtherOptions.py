@@ -20,13 +20,14 @@ class UserOptions:
         print(date_birthday)
         bday_hol = any(date_birthday == num for num in bank_holidays)
         print(bday_hol)
-        if bday_hol == False:
+        if not bday_hol:
             if date_birthday.weekday() >= 5:
                 return True
             elif date_birthday.weekday() < 5:
                 return False
         else:
             return True
+
     def maximise(listofbankhols, year):
         # getting just that years holidays plus new years day
         next_year = int(year) + 1
