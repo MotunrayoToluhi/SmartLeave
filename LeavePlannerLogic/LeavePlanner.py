@@ -23,10 +23,8 @@ class LeavePlannerFunc:
         self.date_list = [holiday["date"] for holiday in self.filtered_year_season[self.holiday_season]]
 
         self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
-        self.calc_holiday_date()
-        self.date_obj_list = [datetime.strptime(date_str, "%Y-%m-%d") for date_str in self.date_list]
+        self.run_leave_planner = self.run_leave_planner
 
-    # asks user max leave entitlement they have
     def leave_entitlement(self):
         while True:
             self.max_leave = input(f"How many leave days are you entitled to per year?: ")
@@ -136,13 +134,11 @@ class LeavePlannerFunc:
                 leave_saved = self.days_of_holiday - leave_days_used
                 print("You have used", leave_days_used, "leave days and have saved", leave_saved, "days")
 
-        return
-
+    def run_leave_planner(self):
+        self.leave_days_used()
 
 # runs program
-if __name__ == "__main__":
-    leave_planner = LeavePlannerFunc()
-    leave_planner.leave_days_used()
-
-
+# if __name__ == "__main__":
+#     leave_planner = LeavePlannerFunc()
+#     leave_planner.leave_days_used()
 
