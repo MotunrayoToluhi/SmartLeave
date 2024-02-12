@@ -1,6 +1,6 @@
 ![logo.png](logo.png)
 # Smart Leave 
-## CFG-Degree Team 7 Final Project
+## Team 7 Final Project
 Welcome to SmartLeave!
 ### About the project:
 Ever thought about how to ensure you are making the absolute *MOST* of the annual leave you get? Well, think no more! Let us introduce to you: ***SmartLeave.***
